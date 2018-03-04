@@ -2,56 +2,38 @@
  * Boundary value test Day.setValue(int)
  * net.sf.borg.model.Day.setVacation
  */
-package eecs4313a2w;
+package eecs4313a2b;
 
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import net.sf.borg.model.Day;
-import net.sf.borg.model.db.DBHelper;
-import net.sf.borg.model.db.jdbc.JdbcDBHelper;
+import net.sf.borg.common.DateUtil;
+
 
 public class BoundaryValueTest {
-
-	private static Day day;
-	private static int min, max;
-	
-	@BeforeClass
-	public static void setUp() throws Exception {
-		DBHelper.setFactory(new JdbcDBHelper());
-		DBHelper.setController(new JdbcDBHelper());
-		DBHelper.getController().connect("jdbc:hsqldb:mem:whatever");
-		day = Day.getDay(2018, 3, 1);
-		min = Integer.MIN_VALUE;
-		max = Integer.MAX_VALUE;
-	}
 	
 	@Test
-	public void testSetVacation() {
+	public void testMinuteString() {
+		int min = 0, // 0 since we're not dealing with negative date/time in this app
+			max = Integer.MAX_VALUE;
 		// min
-		int v = min;
-		day.setVacation(v);
-		assertEquals("Vacation value = " + String.valueOf(v), v, day.getVacation());
+		assertEquals("0 Minutes", DateUtil.minuteString(0));
+		
+		// min + 1
+		assertEquals("1 Minute", DateUtil.minuteString(min + 1));
 		
 		// max
-		v = max;
-		day.setVacation(v);
-		assertEquals("Vacation value = " + String.valueOf(v), v, day.getVacation());
-	
-		// min + 1
-		v = min + 1;
-		day.setVacation(v);
-		assertEquals("Vacation value = " + String.valueOf(v), v, day.getVacation());
-	
+		assertEquals(simpleOracle(max), DateUtil.minuteString(max));
+		
 		// max - 1
-		v = max - 1;
-		day.setVacation(v);
-		assertEquals("Vacation value = " + String.valueOf(v), v, day.getVacation());
+		assertEquals(simpleOracle(max - 1), DateUtil.minuteString(max - 1));
 		
 		// nominal
-		v = (max + min) / 2;
-		day.setVacation(v);
-		assertEquals("Vacation value = " + String.valueOf(v), v, day.getVacation());
+		assertEquals(simpleOracle(max / 2), DateUtil.minuteString(max / 2));
+	}
+	
+	private static String simpleOracle(int i) {
+		return i / 60 + " Hours " + i % 60 + " Minutes";
 	}
 }

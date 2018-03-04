@@ -31,15 +31,17 @@ Returns:
 * The encrypted (original) string
 ```
 
-##### 3. net.sf.borg.model.Day
+##### 3. net.sf.borg.common.DateUtil
 ```java
-public void setVacation(int i)
+public static String minuteString(int i)
 ```
 ```
-This method sets the vacation value of a day
-
+This method generate a human readable string for a number of minutes
+in the following format [n Hour[s]] m Minute[s]
+Since we don't deal with negative time in this calendar app, we can
+expect the param i to be positive.
 Parameters:
-* i - the new vacation value
+* i - the number of minutes to convert.
 ```
 
 ---
@@ -52,7 +54,7 @@ We used equivalent class testing to test this method because...
 ```
 We used decision table testing to test this method because...
 ```
-##### 3. net.sf.borg.model.Day.setVacation(int)
+##### 3. net.sf.borg.common.DateUtils.minuteString(int)
 ```
 We used boundary value testing to test this method because...
 ```
