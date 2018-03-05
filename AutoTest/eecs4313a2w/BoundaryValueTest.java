@@ -33,11 +33,6 @@ public class BoundaryValueTest {
 		assertEquals(simpleOracle(max / 2), DateUtil.minuteString(max / 2));
 	}
 	
-	@Test
-	public void additionalTest() {
-		assertEquals("1 Hour", DateUtil.minuteString(60));
-	}
-	
 	private static String simpleOracle(int i) {
 		return i / 60 + " Hours " + i % 60 + " Minutes";
 	}

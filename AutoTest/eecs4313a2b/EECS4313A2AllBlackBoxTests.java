@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ BoundaryValueTest.class,
-				EquivalentClassTest.class,
-				DecisionTableTest.class})
+	EquivalentClassTest.class,
+	DTT_minuteString.class})
 public class EECS4313A2AllBlackBoxTests {
 }
