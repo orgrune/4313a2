@@ -10,8 +10,8 @@ import eecs4313a2b.ECT_daysBetween;
 
 @RunWith(Suite.class)
 @SuiteClasses({ BVT_calculateRepeatNumber.class,
-				ECT_daysBetween.class,
-				DTT_minuteString.class})
+		ECT_daysBetween.class,
+		DTT_minuteString.class})
 public class EECS4313A2AllWhiteBoxTests {
 
 }
