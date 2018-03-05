@@ -2,7 +2,7 @@
  * Boundary value test Day.setValue(int)
  * net.sf.borg.model.Day.setVacation
  */
-package eecs4313a2b;
+package eecs4313a2w;
 
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
@@ -31,6 +31,11 @@ public class BoundaryValueTest {
 		
 		// nominal
 		assertEquals(simpleOracle(max / 2), DateUtil.minuteString(max / 2));
+	}
+	
+	@Test
+	public void additionalTest() {
+		assertEquals("1 Hour", DateUtil.minuteString(60));
 	}
 	
 	private static String simpleOracle(int i) {
